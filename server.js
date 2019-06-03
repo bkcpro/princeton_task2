@@ -14,7 +14,7 @@ app.post('/sendmessage', (req, res) => {
   const ip = req.connection.remoteAddress;
   var message = req.body;
 
-  res.send({ip, message});
+  res.send({ip, JSON.stringify(message)});
 });
 
 // app.get('/', (req, res) => {
