@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title></title>
+    <link href='styles.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+
+  <body>
+
+        <div class='level1 request'>
+          <div class='level2 gp_ops'>
+            <div class='level3 post'>
+              <div class='level4'>
+                <button class='btn btn-small btn-primary post-btn'> Post </button>
+              </div>
+
+              <div class='level4'>
+                <span> Message: </span>
+                <input type='text'  id='input_text' />
+              </div>
+            </div>
+
+            <div class='level3 get'>
+              <div class='level4'>
+                <button class='btn btn-small btn-primary get-btn'> Get </button>
+              </div>
+
+              <div class='level4'>
+                <div class='level5'>
+                  <div class='level6'>
+                    <span> View Page: </span>
+                  </div>
+
+                  <div class='level6'>
+                    <input type='text' />
+                  </div>
+                </div>
+
+                <div class='level5'>
+                  <div class='level6'>
+                    <span> # of messages: </span>
+                  </div>
+
+                  <div class='level6'>
+                    <input type='text' />
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <div class='level2 request_log'>
+            <div class='level3'>
+              <p>
+                HTTP Requests:
+              </p>
+            </div>
+
+            <div class='level3'>
+              <li>
+                <ul>
+                  1
+                </ul>
+                <ul>
+                  2
+                </ul>
+                <ul>
+                  3
+                </ul>
+                <ul>
+                  4
+                </ul>
+                <ul>
+                  5
+                </ul>
+              </li>
+            </div>
+          </div>
+        </div>
+
+        <div class="level1 display_messages">
+          <div class='level2'>
+            <p>
+              Messages
+            </p>
+          </div>
+
+          <div class='level2'>
+            <div class='message_output'>
+              <p>
+
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <script
+          src="https://code.jquery.com/jquery-3.4.1.min.js"
+          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+          crossorigin="anonymous">
+        </script>
+        <script type='text/javascript' src='script.js'></script>
+
+  </body>
+</html>
