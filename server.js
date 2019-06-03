@@ -12,9 +12,9 @@ app.use(bodyParser.json());
 app.post('/sendmessage', (req, res) => {
 
   const ip = req.connection.remoteAddress;
-  var message = req.body.message;
+  var message = req.body;
 
-  console.log(message);
+  console.log(ip, message);
 });
 
 // app.get('/', (req, res) => {
