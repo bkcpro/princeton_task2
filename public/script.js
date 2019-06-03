@@ -5,7 +5,7 @@ $('.post-btn').click(function(){
   else{
     const url = 'https://princeton-assgn-task2.herokuapp.com/sendmessage'
     $.post(url, JSON.stringify({'name': 'bhargava'}), function(data){
-      $('.display_messages .message_output p').text(data);
+      $('.display_messages .message_output p').text(JSON.stringify(data));
     });
   }
 });
