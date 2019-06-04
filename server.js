@@ -14,7 +14,8 @@ app.use(bodyParser.json());
 
 app.post('/sendmessage', (req, res) => {
 
-  const ip = ipaddr.toIPv4Address(req.connection.remoteAddress);
+  const ip_temp = ipaddr.parse(req.connection.remoteAddress);
+  const ip = ipaddr.fromByteArray(ip_temp).toString();
 
   const text = req.body.message;
 
