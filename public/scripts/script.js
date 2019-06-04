@@ -37,8 +37,8 @@ requirejs(['jquery', 'moment', 'jquery-ui'], function($, moment){
       $(logArray[0]).html(`<span> <b>- Request Method: </b><i style="color: blue">post/ </i> | <b>Message: </b><i style="color: blue"> ${input} </i> | <b>Time-Stamp: </b><i style="color: blue"> ${moment.utc().format()}</i> </span>`).toggleClass('highlight');
 
 
-      const url = 'http://localhost:3000/sendmessage'
-      // const url = 'https://princeton-assgn-task2.herokuapp.com/sendmessage'
+      // const url = 'http://localhost:3000/sendmessage'
+      const url = 'https://princeton-assgn-task2.herokuapp.com/sendmessage'
 
       const data = {
         message: input
@@ -63,8 +63,8 @@ requirejs(['jquery', 'moment', 'jquery-ui'], function($, moment){
 
   $('.get-btn').click(function(){
 
-    let url = 'http://localhost:3000/getmessages';
-    // let url = 'https://princeton-assgn-task2.herokuapp.com/getmessages';
+    // let url = 'http://localhost:3000/getmessages';
+    let url = 'https://princeton-assgn-task2.herokuapp.com/getmessages';
 
     let messagelimit = $('#messagelimit').val() || 20;
     let page_num = $('#viewpage').val() || 1;
@@ -99,8 +99,8 @@ requirejs(['jquery', 'moment', 'jquery-ui'], function($, moment){
   $('.delete-btn').click(function(){
 
 
-    let url = 'http://localhost:3000/deletemessages';
-    // let url = 'https://princeton-assgn-task2.herokuapp.com/deletemessages';
+    // let url = 'http://localhost:3000/deletemessages';
+    let url = 'https://princeton-assgn-task2.herokuapp.com/deletemessages';
 
     $.post({
       type: "POST",
