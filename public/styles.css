@@ -69,19 +69,26 @@ html, body{
 
 
 /* request log styling */
-.request .request_log{
+.request_log{
   border-top: 1px solid black;
 }
 
-.request .request_log .level3 p{
-  margin: 20px;
+.request_log .level3{
+  /* margin: 20px; */
   text-align: center;
+}
+
+.request_log .level3 p{
   text-decoration: underline;
+}
+
+.request_log .level3 ul{
+  font-size: 0.5 rem;
 }
 
 .request .request_log .level3:last-child li{
   background-color: #f5f5f5;
-  height: 205px;
+  height: 60px;
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -99,11 +106,16 @@ html, body{
 
 .display_messages .level2 p{
   text-decoration: underline;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .display_messages .message_output{
   margin: 5px;
-  height: 612px;
+  height: 660px;
   background-color: #f5f5f5;
+  overflow: scroll;
+}
+
+.display_messages .delete{
+  margin-top: 13px;
 }

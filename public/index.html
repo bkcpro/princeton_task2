@@ -58,22 +58,12 @@
             </div>
 
             <div class='level3'>
-              <li>
-                <ul>
-                  1
-                </ul>
-                <ul>
-                  2
-                </ul>
-                <ul>
-                  3
-                </ul>
-                <ul>
-                  4
-                </ul>
-                <ul>
-                  5
-                </ul>
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
               </li>
             </div>
           </div>
@@ -82,25 +72,26 @@
         <div class="level1 display_messages">
           <div class='level2'>
             <p>
-              Messages
+              Message Pane:
             </p>
           </div>
 
           <div class='level2'>
             <div class='message_output'>
-              <p>
+              <p id='output_window'>
 
               </p>
             </div>
           </div>
+
+          <div class='level2'>
+            <div class='delete'>
+              <button class='delete-btn'> Delete All Messages </button>
+            </div>
+          </div>
         </div>
 
-        <script
-          src="https://code.jquery.com/jquery-3.4.1.min.js"
-          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-          crossorigin="anonymous">
-        </script>
-        <script type='text/javascript' src='script.js'></script>
+        <script data-main='./scripts/script.js' src='./scripts/require.js'></script>
 
   </body>
 </html>

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-var message = mongoose.model('Message', {
+var Message = mongoose.model('Message', {
   content: {
     type: String,
     required: true,
@@ -9,5 +9,12 @@ var message = mongoose.model('Message', {
   },
   source_ip: {
     type: String,
+    trim: true
+  },
+  timeStamp: {
+    type: String,
+    trim: true
   }
 });
+
+module.exports = {Message};

@@ -1,6 +1,9 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+var ipaddr = require('ipaddr.js');
+
+const {mongoose} = require('./db/mongoose');
+const {Message} = require('./models/message_format.js');
 
 var app = express();
 
@@ -12,17 +15,46 @@ app.use(bodyParser.json());
 app.post('/sendmessage', (req, res) => {
 
   const ip = req.connection.remoteAddress;
-  var message = req.body;
 
-  res.send(JSON.stringify({ip, message}));
+
+  const text = req.body.message;
+
+  var message = new Message({
+    content: text,
+    source_ip: ip,
+  });
+
+  message.timeStamp = message._id.getTimestamp().toISOString();
+
+  // console.log(message);
+
+  message.save().then((result) => {
+    // res.send(result);
+  }, (err) => {
+    res.send(err);
+  });
+
+  // console.log(message.content, message.source_ip, message._id.getTimestamp());
+
+  // res.send({ip, message});
 });
 
-// app.get('/', (req, res) => {
-//   res.sendFile(__dirname + '/public/index.html')
-// });
+app.get('/getmessages', (req, res) => {
 
-app.get('/getMessage', (request, response) => {
-  res
+  Message.find().then((messages) => {
+    res.send(messages);
+  }, (err) => {
+    res.status(400).send(e);
+  });
+});
+
+app.post('/deletemessages', (req, res) => {
+
+  Message.deleteMany().then((res) => {
+    console.log(res);
+  }, (err) => {
+    console.log(err);
+  });
 });
 
 
