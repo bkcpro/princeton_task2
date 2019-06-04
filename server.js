@@ -14,11 +14,9 @@ app.use(bodyParser.json());
 
 app.post('/sendmessage', (req, res) => {
 
-  const ip = '::ffff:10.52.13.4';
+  const ip = req.connection.remoteAddress;
 
   let ipv4 = ip.match(/^([0-9A-Fa-f]{0,4}:){2,7}([0-9A-Fa-f]{1,4}$|((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4})$/);
-
-  console.log(ip.match(/\b::ffff:\s+\K\S+/g));
 
   const text = req.body.message;
 
