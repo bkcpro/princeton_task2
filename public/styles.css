@@ -104,7 +104,7 @@ html, body{
   margin: 5px;
 }
 
-.display_messages .level2 p{
+.display_messages .level2:first-child p{
   text-decoration: underline;
   margin-top: 10px;
 }
@@ -118,4 +118,27 @@ html, body{
 
 .display_messages .delete{
   margin-top: 13px;
+}
+
+
+/* animations */
+
+@-webkit-keyframes highlight {
+    from { background-color: #F6F6BC;}
+    to {background-color: white;}
+}
+}
+@-moz-keyframes highlight {
+    from { background-color: #F6F6BC;}
+    to {background-color: white;}
+}
+@-keyframes highlight {
+    from { background-color: #F6F6BC;}
+    to {background-color: white;}
+}
+
+.highlight {
+    -moz-animation: highlight 2s ease 0s 1 alternate ;
+    -webkit-animation: highlight 2s ease 0s 1 alternate;
+    animation: highlight 2s ease 0s 1 alternate;
 }

@@ -2,16 +2,22 @@ requirejs.config({
   baseUrl: 'scripts/lib'
 });
 
-requirejs(['jquery', 'moment'], function($, moment){
+requirejs(['jquery', 'moment', 'jquery-ui'], function($, moment){
 
   function printLogMessage(messages){
 
-    console.log(messages);
 
-    $('.display_messages .message_output p').text('');
+    $('#output_window').text('');
+
+    if(!messages.length) {
+      $('#output_window').append(`<p> Page not found - check page and message limit </p>`);
+      return;
+    }
+
+    $('#output_window').append(`<p> Message count: <i style='color: blue'>${messages.length}</i>`);
 
     for(let i=0; i<messages.length; i++){
-      $('#output_window').append(`<p> Message: <i style='color: blue'>${messages[i].content}</i> from : <i style='color: blue'>${messages[i].source_ip}</i> at <i style='color: blue'>${messages[i].timeStamp}</i> </p>`);
+      $('#output_window').append(`<p> Message: <i style='color: blue'>${messages[i].content}</i> from: <i style='color: blue'>${messages[i].source_ip}</i> at: <i style='color: blue'>${messages[i].timeStamp}</i> </p>`);
     }
   }
 
@@ -28,12 +34,11 @@ requirejs(['jquery', 'moment'], function($, moment){
         $(logArray[i]).html($(logArray[i-1]).html());
       }
 
-      $(logArray[0]).html(`<span> <b>- Request Method: </b><i style="color: blue">post/ </i> | <b>Message: </b><i style="color: blue"> ${input} </i> | <b>Time-Stamp: </b><i style="color: blue"> ${moment.utc().format()}</i> </span>`);
+      $(logArray[0]).html(`<span> <b>- Request Method: </b><i style="color: blue">post/ </i> | <b>Message: </b><i style="color: blue"> ${input} </i> | <b>Time-Stamp: </b><i style="color: blue"> ${moment.utc().format()}</i> </span>`).toggleClass('highlight');
 
 
-
-      // const url = 'http://localhost:3000/sendmessage'
-      const url = 'https://princeton-assgn-task2.herokuapp.com/sendmessage'
+      const url = 'http://localhost:3000/sendmessage'
+      // const url = 'https://princeton-assgn-task2.herokuapp.com/sendmessage'
 
       const data = {
         message: input
@@ -53,14 +58,21 @@ requirejs(['jquery', 'moment'], function($, moment){
         dataType: 'json'
       });
     }
-      // const url = 'https://princeton-assgn-task2.herokuapp.com/sendmessage'
   });
 
 
   $('.get-btn').click(function(){
 
-    // let url = 'http://localhost:3000/getmessages';
-    let url = 'https://princeton-assgn-task2.herokuapp.com/getmessages';
+    let url = 'http://localhost:3000/getmessages';
+    // let url = 'https://princeton-assgn-task2.herokuapp.com/getmessages';
+
+    let messagelimit = $('#messagelimit').val() || 20;
+    let page_num = $('#viewpage').val() || 1;
+
+    const data = {
+      page: page_num,
+      limit: messagelimit
+    };
 
 
     let logArray = $('.request_log .level3 ul').children();
@@ -69,15 +81,17 @@ requirejs(['jquery', 'moment'], function($, moment){
       $(logArray[i]).html($(logArray[i-1]).html());
     }
 
-    $(logArray[0]).html(`<span> <b>- Request Method: </b><i style="color: blue">get/ </i> | <b>Time-Stamp: </b><i style="color: blue"> ${moment.utc().format()}</i> </span>`);
+    $(logArray[0]).html(`<span> <b>- Request Method: </b><i style="color: blue">get/ </i> | <b>Time-Stamp: </b><i style="color: blue"> ${moment.utc().format()}</i> </span>`).toggleClass('highlight');
 
 
-    $.get({
-      type: "GET",
+    $.ajax({
+      type: "POST",
       url: url,
+      data: JSON.stringify(data),
       success: function(data){
         printLogMessage(data);
       },
+      contentType: 'application/json; charset=utf-8',
       dataType: 'json'
     });
   });
@@ -85,8 +99,8 @@ requirejs(['jquery', 'moment'], function($, moment){
   $('.delete-btn').click(function(){
 
 
-    // let url = 'http://localhost:3000/deletemessages';
-    let url = 'https://princeton-assgn-task2.herokuapp.com/deletemessages';
+    let url = 'http://localhost:3000/deletemessages';
+    // let url = 'https://princeton-assgn-task2.herokuapp.com/deletemessages';
 
     $.post({
       type: "POST",
